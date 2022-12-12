@@ -5,34 +5,20 @@ import java.util.List;
 
 public class Channel {
 
-	private Long id;
+	private Long channelId;
 	private String name;
-	private List<Message> messages = new ArrayList<>();
-	private List<User> users = new ArrayList<>();
 	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}	
+	public Long getChannelId() {
+		return channelId;
 	}
-	public List<Message> getMessages() {
-		return messages;
-	}
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
-	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setChannelId(Long id) {
+		this.channelId = id;
 	}
 	
 }

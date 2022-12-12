@@ -2,16 +2,15 @@ package com.assignment14.domain;
 
 public class Message {
 
-	private Long id;
+	private Long channelId;
 	private String contents;
 	private User user;
-	private Channel channel;
 	
-	public Long getId() {
-		return id;
+	public Long getChannelId() {
+		return channelId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setChannelId(Long channelId) {
+		this.channelId = channelId;
 	}
 	public String getContents() {
 		return contents;
@@ -25,12 +24,4 @@ public class Message {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Channel getChannel() {
-		return channel;
-	}
-	public void setChannel(Channel channel) {
-		this.channel = channel;
-	}
-	
-	
 }

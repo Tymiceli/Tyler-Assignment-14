@@ -1,27 +1,47 @@
 package com.assignment14.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.assignment14.domain.User;
-import com.assignment14.service.UserService;
+import com.assignment14.domain.Channel;
+import com.assignment14.domain.Message;
+import com.assignment14.service.ChannelService;
+import com.assignment14.service.MessageService;
 
 @Controller
 public class ChannelController {
 	
 	@Autowired
-	UserService userService;
+	ChannelService channelService;
+	@Autowired
+	MessageService messageService;
+	
+	@GetMapping("/")
+	public String redirectToWelcome() {
+		return "redirect:/welcome";
+	}
     
-    @GetMapping("/channels/{id}")
-    public String getChannel (ModelMap model, @PathVariable Long userId) {
-    	User user = userService.getUserById(userId);
+    @GetMapping("/channels/{channelId}")
+    public String getChannel (ModelMap model, @PathVariable Long channelId) {
+    	Channel channel = channelService.findById(channelId);
+    	List<Message> messages = messageService.getMessagesFromChannel(channelId);
     	
-    	
-    	model.put("user", user);
+    	model.put("messages", messages);
+    	model.put("channel", channel);
     	return "channel";
+    }
+    
+    @GetMapping("/welcome")
+    public String getWelcomePage (ModelMap model) {
+    	List<Channel> channels = channelService.findAll();
+    	model.put("channels", channels);
+    	return "welcome";
     }
     
 }

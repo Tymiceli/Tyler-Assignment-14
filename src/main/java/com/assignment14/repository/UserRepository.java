@@ -1,22 +1,19 @@
 package com.assignment14.repository;
 
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.assignment14.domain.User;
 
-@Repository
+@Component
 public class UserRepository {
 	
-	private HashMap<Long, User> users = new HashMap<Long, User>();
-
-	public void save(User user) {
-		users.put(user.getId(), user);
-	}
-
-	public User findById(Long userId) {
-		User user = users.get(userId);
+	private Set<User> users = new HashSet<>(); 
+			
+	public User save(User user) {
+		users.add(user);
 		return user;
 	}
 

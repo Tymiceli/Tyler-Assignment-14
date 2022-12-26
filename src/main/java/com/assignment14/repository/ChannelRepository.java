@@ -15,7 +15,7 @@ public class ChannelRepository {
 	
 	public ChannelRepository () {
 		Channel general = new Channel();
-		general.setChannelId(1L);
+		general.setChannelId((long) 1);
 		general.setName("General");
 		
 		channels.add(general);
@@ -31,5 +31,13 @@ public class ChannelRepository {
 	
 	public List<Channel> findAll() {
 		return channels;
+	}
+
+	public Channel save(String channelName) {
+		Channel channel = new Channel();
+		channel.setName(channelName);
+		channels.add(channel);
+		channel.setChannelId((long) channels.size());
+		return channel;
 	}
 }

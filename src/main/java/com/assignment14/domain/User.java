@@ -9,6 +9,7 @@ public class User {
     private String name;
     private List<Message> messages = new ArrayList<>();
     private List<Channel> channels = new ArrayList<>();
+    
 	public Long getId() {
 		return id;
 	}
@@ -32,6 +33,10 @@ public class User {
 	}
 	public void setChannels(List<Channel> channels) {
 		this.channels = channels;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", messages=" + messages + ", channels=" + channels + "]";
 	}
     
     

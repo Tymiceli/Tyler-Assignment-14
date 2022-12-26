@@ -3,30 +3,37 @@
 <head>
 	<title>Join Channel</title>
 		<script type="text/javascript">
-			var user = sessionStorage.getItem(`user`) // gets user object from session storage
+				var user = sessionStorage.getItem(`user`) // gets user object from session storage
 
-			if (user == null) { // if user from sessionStorage is null (does not exist yet)
-			let name = prompt("Please enter your name or proceed as a guest", "Guest")
-			while (name === '' || name == null) {
-			name = prompt("Please enter your name or proceed as a guest", "Guest")
+				if (user == null) { // if user from sessionStorage is null (does not exist yet)
+					let name = prompt("Please enter your name or proceed as a guest", "Guest")
+				while (name === '' || name == null) {
+					name = prompt("Please enter your name or proceed as a guest", "Guest")
+				}
+				fetch ('/users', {
+					method: 'POST',
+					body: name
+				}).then(response => response.json())
+			.then(user => {
+				sessionStorage.setItem('user', JSON.stringify(user))
+			})
+			} else {
+				user = JSON.parse(sessionStorage.getItem('user'))
+				console.log(user)
 			}
-			fetch ('/users', {
-				method: 'POST',
-				body: name
-			}).then(response => response.json())
-		.then(user => {
-			sessionStorage.setItem('user', JSON.stringify(user))
-		})
-		} else {
-			user = JSON.parse(sessionStorage.getItem('user'))
-			console.log(user)
-	}
-</script>
+		</script>
 </head>
 <body>
 	<h2>Join a Channel Below!</h2>
 	<div th:each="channel : ${channels}">
 		<a th:href="@{/channels/{channelId} (channelId=${channel.channelId})}" th:text="${channel.name}"></a>
 	</div>
+
+	<h4 style="margin-bottom: 2px !important;">Create New Channel</h4>
+	<form action="/create-channel" method="post">
+		<label for="channel-name">Enter the name of the Channel:</label><br>
+		<input type="text" id="channel-name" name="channelName"><br>
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>

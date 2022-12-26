@@ -17,6 +17,9 @@ public class UserController {
 	@PostMapping("/users")
     public User createUser (@RequestBody String name) {
         User user = userService.createUser(name);
+        System.out.println(user.getName() + " " + user.getId());
+        System.out.println(user.getChannels());
+        System.out.println(user.getMessages());
         return user;
     }
 }

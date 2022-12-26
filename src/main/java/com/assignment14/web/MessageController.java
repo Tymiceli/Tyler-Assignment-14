@@ -21,11 +21,14 @@ public class MessageController {
 	@GetMapping("/messages/{channelId}")
 	public List<Message> getMessagesByChannelId (@PathVariable Long channelId) {
 		List<Message> channelMessages = messageService.getMessagesFromChannel(channelId);
+//		System.out.println(channelMessages.size());
 		return channelMessages;
 	}
 	
 	@PostMapping("/messages") 
-	public void postMessagesToUserId (@RequestBody Message message) {
+	public Message postMessagesToUserId (@RequestBody Message message) {
 		messageService.saveMessageToChannel(message);
+		System.out.println(message);
+		return message;
 	}
 }

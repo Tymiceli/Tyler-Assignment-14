@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://thymeLeaf.org">
+    <link rel = "stylesheet" href="/css/channel.css">
     <head>
         <title th:text="${channel.name}"></title>
+        <script type="text/javascript">
+            if (!sessionStorage.getItem('user')) {
+                window.location.replace('/welcome')
+            }
+        </script>
     </head>
+    <body>
+        <div id = "messages">
+        </div>
+        <div class = "users-message">
+            <textarea rows="3" cols="50" id="message-box" th:attr="data-id=${channel.channelId}"></textarea>
+            <script type="text/javascript" src="/js/channel.js"></script>
+        </div>
+        <a href="/welcome">Return</a>
+    </body>
 </html>

@@ -20,6 +20,7 @@ public class MessageRepository {
 		return Optional.ofNullable(messagesInChannel);
 	}
 	
+//	public void saveMessagesInChannel(Long channelId, List<Message> messagesInChannel) {
 	public void saveMessagesInChannel(Long channelId, List<Message> messagesInChannel) {
 		messages.put(channelId, messagesInChannel);
 	}

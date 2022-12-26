@@ -5,7 +5,7 @@ public class Message {
 	private Long channelId;
 	private String contents;
 	private User user;
-	
+
 	public Long getChannelId() {
 		return channelId;
 	}
@@ -24,4 +24,10 @@ public class Message {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	@Override
+	public String toString() {
+		return "Message [channelId=" + channelId + ", contents=" + contents + ", user=" + user + "]";
+	}
+	
+	
 }

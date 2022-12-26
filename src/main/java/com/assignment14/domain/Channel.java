@@ -1,8 +1,5 @@
 package com.assignment14.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Channel {
 
 	private Long channelId;
@@ -20,5 +17,8 @@ public class Channel {
 	public void setChannelId(Long id) {
 		this.channelId = id;
 	}
-	
+	@Override
+	public String toString() {
+		return "Channel [channelId=" + channelId + ", name=" + name + "]";
+	}
 }
